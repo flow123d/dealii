@@ -157,9 +157,9 @@ MESSAGE(STATUS "Configuring done. Proceed to target definitions now.")
 ADD_SUBDIRECTORY(cmake/scripts)
 ADD_SUBDIRECTORY(include)
 
-IF(DEAL_II_HAVE_DOC_DIRECTORY)
-  ADD_SUBDIRECTORY(doc) # has to be included after include
-ENDIF()
+#IF(DEAL_II_HAVE_DOC_DIRECTORY)
+#  ADD_SUBDIRECTORY(doc) # has to be included after include
+#ENDIF()
 
 IF(DEAL_II_HAVE_BUNDLED_DIRECTORY)
   ADD_SUBDIRECTORY(bundled)
@@ -167,19 +167,28 @@ ENDIF()
 ADD_SUBDIRECTORY(source) # has to be included after bundled
 
 ADD_SUBDIRECTORY(cmake/config) # has to be included after source
-ADD_SUBDIRECTORY(contrib) # has to be included after source
-ADD_SUBDIRECTORY(examples)
+#ADD_SUBDIRECTORY(contrib) # has to be included after source
+#ADD_SUBDIRECTORY(examples)
 
 #
 # Do not configure testsuite on Windows targets because posix shell and
 # commands like 'test', '> /dev/null', 'rm', etc. are not available
 #
-IF(DEAL_II_HAVE_TESTS_DIRECTORY AND NOT DEAL_II_MSVC)
-  ADD_SUBDIRECTORY(tests)
-ENDIF()
+#IF(DEAL_II_HAVE_TESTS_DIRECTORY AND NOT DEAL_II_MSVC)
+#  ADD_SUBDIRECTORY(tests)
+#ENDIF()
 
 #
 # And finally, print the configuration:
 #
 FILE(READ ${DEAL_II_BINARY_DIR}/summary.log DEAL_II_LOG_SUMMARY)
 MESSAGE("${DEAL_II_LOG_SUMMARY}")
+
+
+#
+# Propagate important variables to upstream directory, if built as submodule.
+#
+SET(DEAL_II_BUNDLED_INCLUDE_DIRS "${DEAL_II_BUNDLED_INCLUDE_DIRS}" PARENT_SCOPE)
+
+LIST(GET DEAL_II_BUILD_TYPES 0 BUILD_TYPE)
+SET(DEAL_II_LIBRARY_NAME "${DEAL_II_BASE_NAME}${DEAL_II_${BUILD_TYPE}_SUFFIX}" PARENT_SCOPE)
