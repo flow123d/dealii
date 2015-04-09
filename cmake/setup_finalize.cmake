@@ -65,6 +65,9 @@ FOREACH(_feature ${DEAL_II_FEATURES})
   FILTER_SYSTEM_LIBRARIES(${_feature}) # TODO, remove here
   REGISTER_FEATURE(${_feature})
 ENDFOREACH()
+# Some features' definitions include the switch "-D" which has to be removed
+# from DEAL_II_DEFINITIONS
+STRING(REPLACE "-D" "" DEAL_II_DEFINITIONS ${DEAL_II_DEFINITIONS})
 
 #
 # Deduplicate entries one more time :-]
