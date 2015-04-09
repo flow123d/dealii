@@ -30,7 +30,7 @@
 #
 # General configuration for cmake:
 #
-MESSAGE(STATUS "This is CMake ${CMAKE_VERSION}")
+MESSAGE(STATUS "Building deal.II library (CMake ${CMAKE_VERSION})")
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
@@ -181,8 +181,8 @@ ADD_SUBDIRECTORY(cmake/config) # has to be included after source
 #
 # And finally, print the configuration:
 #
-FILE(READ ${DEAL_II_BINARY_DIR}/summary.log DEAL_II_LOG_SUMMARY)
-MESSAGE("${DEAL_II_LOG_SUMMARY}")
+#FILE(READ ${DEAL_II_BINARY_DIR}/summary.log DEAL_II_LOG_SUMMARY)
+#MESSAGE("${DEAL_II_LOG_SUMMARY}")
 
 
 #
@@ -192,3 +192,6 @@ SET(DEAL_II_BUNDLED_INCLUDE_DIRS "${DEAL_II_BUNDLED_INCLUDE_DIRS}" PARENT_SCOPE)
 
 LIST(GET DEAL_II_BUILD_TYPES 0 BUILD_TYPE)
 SET(DEAL_II_LIBRARY_NAME "${DEAL_II_BASE_NAME}${DEAL_II_${BUILD_TYPE}_SUFFIX}" PARENT_SCOPE)
+
+
+MESSAGE(STATUS "Building deal.II library - Done")
