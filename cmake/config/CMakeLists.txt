@@ -32,7 +32,7 @@ MESSAGE(STATUS "Setting up project configuration")
 #
 CONFIGURE_FILE( # for binary dir:
   ${CMAKE_CURRENT_SOURCE_DIR}/template-arguments.in
-  ${CMAKE_BINARY_DIR}/${DEAL_II_COMMON_RELDIR}/template-arguments
+  ${DEAL_II_BINARY_DIR}/${DEAL_II_COMMON_RELDIR}/template-arguments
   )
 
 
@@ -43,15 +43,15 @@ CONFIGURE_FILE( # for binary dir:
 ########################################################################
 
 FILE(COPY # for binary dir:
-  ${CMAKE_SOURCE_DIR}/cmake/macros/macro_deal_ii_initialize_cached_variables.cmake
-  ${CMAKE_SOURCE_DIR}/cmake/macros/macro_deal_ii_invoke_autopilot.cmake
-  ${CMAKE_SOURCE_DIR}/cmake/macros/macro_deal_ii_setup_target.cmake
-  DESTINATION ${CMAKE_BINARY_DIR}/${DEAL_II_CMAKE_MACROS_RELDIR}
+  ${DEAL_II_SOURCE_DIR}/cmake/macros/macro_deal_ii_initialize_cached_variables.cmake
+  ${DEAL_II_SOURCE_DIR}/cmake/macros/macro_deal_ii_invoke_autopilot.cmake
+  ${DEAL_II_SOURCE_DIR}/cmake/macros/macro_deal_ii_setup_target.cmake
+  DESTINATION ${DEAL_II_BINARY_DIR}/${DEAL_II_CMAKE_MACROS_RELDIR}
   )
 INSTALL(FILES # for installation:
-  ${CMAKE_SOURCE_DIR}/cmake/macros/macro_deal_ii_initialize_cached_variables.cmake
-  ${CMAKE_SOURCE_DIR}/cmake/macros/macro_deal_ii_invoke_autopilot.cmake
-  ${CMAKE_SOURCE_DIR}/cmake/macros/macro_deal_ii_setup_target.cmake
+  ${DEAL_II_SOURCE_DIR}/cmake/macros/macro_deal_ii_initialize_cached_variables.cmake
+  ${DEAL_II_SOURCE_DIR}/cmake/macros/macro_deal_ii_invoke_autopilot.cmake
+  ${DEAL_II_SOURCE_DIR}/cmake/macros/macro_deal_ii_setup_target.cmake
   DESTINATION ${DEAL_II_CMAKE_MACROS_RELDIR}
   COMPONENT library
   )
@@ -142,19 +142,19 @@ SET(CONFIG_BUILD_DIR TRUE)
 SET(CONFIG_INCLUDE_DIRS
   \${DEAL_II_PATH}/include
   \${DEAL_II_PATH}/include/deal.II
-  ${CMAKE_SOURCE_DIR}/include/
-  ${CMAKE_SOURCE_DIR}/include/deal.II
+  ${DEAL_II_SOURCE_DIR}/include/
+  ${DEAL_II_SOURCE_DIR}/include/deal.II
   ${DEAL_II_BUNDLED_INCLUDE_DIRS}
   ${DEAL_II_USER_INCLUDE_DIRS}
   )
 CONFIGURE_FILE(
   ${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in
-  ${CMAKE_BINARY_DIR}/${DEAL_II_PROJECT_CONFIG_RELDIR}/${DEAL_II_PROJECT_CONFIG_NAME}Config.cmake
+  ${DEAL_II_BINARY_DIR}/${DEAL_II_PROJECT_CONFIG_RELDIR}/${DEAL_II_PROJECT_CONFIG_NAME}Config.cmake
   @ONLY
   )
 CONFIGURE_FILE(
   ${CMAKE_CURRENT_SOURCE_DIR}/ConfigVersion.cmake.in
-  ${CMAKE_BINARY_DIR}/${DEAL_II_PROJECT_CONFIG_RELDIR}/${DEAL_II_PROJECT_CONFIG_NAME}ConfigVersion.cmake
+  ${DEAL_II_BINARY_DIR}/${DEAL_II_PROJECT_CONFIG_RELDIR}/${DEAL_II_PROJECT_CONFIG_NAME}ConfigVersion.cmake
   @ONLY
   )
 
@@ -191,7 +191,7 @@ INSTALL(FILES
 #
 
 SET(_files
-  ${CMAKE_BINARY_DIR}/${DEAL_II_PROJECT_CONFIG_RELDIR}/${DEAL_II_PROJECT_CONFIG_NAME}Config.cmake
+  ${DEAL_II_BINARY_DIR}/${DEAL_II_PROJECT_CONFIG_RELDIR}/${DEAL_II_PROJECT_CONFIG_NAME}Config.cmake
   ${CMAKE_CURRENT_BINARY_DIR}/${DEAL_II_PROJECT_CONFIG_NAME}Config.cmake
   )
 FOREACH(_file ${_files})
@@ -350,18 +350,18 @@ IF(DEAL_II_COMPONENT_COMPAT_FILES)
   #
   # For binary dir:
   #
-  SET(MAKEFILE_D ${CMAKE_BINARY_DIR})
+  SET(MAKEFILE_D ${DEAL_II_BINARY_DIR})
   TO_STRING_AND_ADD_PREFIX(MAKEFILE_INCLUDE_DIRS "${CMAKE_INCLUDE_FLAG_CXX}"
     $(D)/install
     $(D)/install/deal.II
-    ${CMAKE_SOURCE_DIR}/include/
-    ${CMAKE_SOURCE_DIR}/include/deal.II
+    ${DEAL_II_SOURCE_DIR}/include/
+    ${DEAL_II_SOURCE_DIR}/include/deal.II
     ${DEAL_II_BUNDLED_INCLUDE_DIRS}
     ${DEAL_II_USER_INCLUDE_DIRS}
     )
   CONFIGURE_FILE(
     ${CMAKE_CURRENT_SOURCE_DIR}/Make.global_options.in
-    ${CMAKE_BINARY_DIR}/${DEAL_II_COMMON_RELDIR}/Make.global_options
+    ${DEAL_II_BINARY_DIR}/${DEAL_II_COMMON_RELDIR}/Make.global_options
     )
   #
   # For installation:
@@ -378,7 +378,7 @@ IF(DEAL_II_COMPONENT_COMPAT_FILES)
     ${CMAKE_CURRENT_BINARY_DIR}/Make.global_options
     )
   INSTALL(FILES
-    ${CMAKE_BINARY_DIR}/${DEAL_II_COMMON_RELDIR}/template-arguments
+    ${DEAL_II_BINARY_DIR}/${DEAL_II_COMMON_RELDIR}/template-arguments
     ${CMAKE_CURRENT_BINARY_DIR}/Make.global_options
     DESTINATION ${DEAL_II_COMMON_RELDIR}
     COMPONENT compat_files

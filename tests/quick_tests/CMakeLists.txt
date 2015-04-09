@@ -19,8 +19,8 @@
 ENABLE_TESTING()
 
 INCLUDE_DIRECTORIES(
-  ${CMAKE_BINARY_DIR}/include/
-  ${CMAKE_SOURCE_DIR}/include/
+  ${DEAL_II_BINARY_DIR}/include/
+  ${DEAL_II_SOURCE_DIR}/include/
   ${DEAL_II_BUNDLED_INCLUDE_DIRS}
   ${DEAL_II_INCLUDE_DIRS}
   )
@@ -66,8 +66,8 @@ MACRO(make_quicktest test_basename build_name mpi_run)
 
   ADD_TEST(NAME ${_target}
     COMMAND ${CMAKE_COMMAND} -DTRGT=${_target}.run -DTEST=${_target}
-      -DDEAL_II_BINARY_DIR=${CMAKE_BINARY_DIR}
-      -P ${CMAKE_SOURCE_DIR}/tests/run_test.cmake
+      -DDEAL_II_BINARY_DIR=${DEAL_II_BINARY_DIR}
+      -P ${DEAL_II_SOURCE_DIR}/tests/run_test.cmake
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
   SET_TESTS_PROPERTIES(${_target} PROPERTIES LABEL "sanity checks")

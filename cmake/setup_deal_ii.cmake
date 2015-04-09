@@ -73,7 +73,7 @@ SET_IF_EMPTY(DEAL_II_PACKAGE_DESCRIPTION
   "Library for solving partial differential equations with the finite element method"
   )
 
-FILE(STRINGS "${CMAKE_SOURCE_DIR}/VERSION" _version LIMIT_COUNT 1)
+FILE(STRINGS "${DEAL_II_SOURCE_DIR}/VERSION" _version LIMIT_COUNT 1)
 SET_IF_EMPTY(DEAL_II_PACKAGE_VERSION "${_version}")
 
 #

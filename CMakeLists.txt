@@ -49,10 +49,16 @@ IF(POLICY CMP0037)
   CMAKE_POLICY(SET CMP0037 OLD)
 ENDIF()
 
+IF("${DEAL_II_SOURCE_DIR}" STREQUAL "")
+  SET(DEAL_II_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+ENDIF()
+IF("${DEAL_II_BINARY_DIR}" STREQUAL "")
+  SET(DEAL_II_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
+ENDIF()
 
 LIST(APPEND CMAKE_MODULE_PATH
-  ${CMAKE_SOURCE_DIR}/cmake/
-  ${CMAKE_SOURCE_DIR}/cmake/modules/
+  ${DEAL_II_SOURCE_DIR}/cmake/
+  ${DEAL_II_SOURCE_DIR}/cmake/modules/
   )
 
 #
@@ -67,15 +73,15 @@ ENDFOREACH()
 #
 # Check for the existence of various optional folders:
 #
-IF(EXISTS ${CMAKE_SOURCE_DIR}/bundled/CMakeLists.txt)
+IF(EXISTS ${DEAL_II_SOURCE_DIR}/bundled/CMakeLists.txt)
   SET(DEAL_II_HAVE_BUNDLED_DIRECTORY TRUE)
 ENDIF()
 
-IF(EXISTS ${CMAKE_SOURCE_DIR}/doc/CMakeLists.txt)
+IF(EXISTS ${DEAL_II_SOURCE_DIR}/doc/CMakeLists.txt)
   SET(DEAL_II_HAVE_DOC_DIRECTORY TRUE)
 ENDIF()
 
-IF(EXISTS ${CMAKE_SOURCE_DIR}/tests/CMakeLists.txt)
+IF(EXISTS ${DEAL_II_SOURCE_DIR}/tests/CMakeLists.txt)
   SET(DEAL_II_HAVE_TESTS_DIRECTORY TRUE)
 ENDIF()
 
@@ -99,7 +105,7 @@ INCLUDE(setup_compiler_flags)
 # Include information about bundled libraries:
 #
 IF(DEAL_II_HAVE_BUNDLED_DIRECTORY)
-  SET(_file ${CMAKE_SOURCE_DIR}/bundled/setup_bundled.cmake)
+  SET(_file ${DEAL_II_SOURCE_DIR}/bundled/setup_bundled.cmake)
   MESSAGE(STATUS "")
   MESSAGE(STATUS "Include ${_file}")
   INCLUDE(${_file})
@@ -175,5 +181,5 @@ ENDIF()
 #
 # And finally, print the configuration:
 #
-FILE(READ ${CMAKE_BINARY_DIR}/summary.log DEAL_II_LOG_SUMMARY)
+FILE(READ ${DEAL_II_BINARY_DIR}/summary.log DEAL_II_LOG_SUMMARY)
 MESSAGE("${DEAL_II_LOG_SUMMARY}")

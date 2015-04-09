@@ -642,7 +642,7 @@ done by hand. Please note:
 # emerges...)
 #
 FILE(GLOB _header
-  ${CMAKE_SOURCE_DIR}/include/deal.II/dofs/*.h
+  ${DEAL_II_SOURCE_DIR}/include/deal.II/dofs/*.h
   )
 
 #
@@ -666,7 +666,7 @@ SET(_inst
 # obj_dofs.release target  with appropriate compile flags and
 # definitions for a simultaneous build of debug and release library.
 # Furthermore, the object name will be stored in
-#   ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/deal_ii_objects_(debug/release)
+#   ${DEAL_II_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/deal_ii_objects_(debug/release)
 # so that it is available in global scope.
 #
 # Header files and instatiation files (${_header}, ${_inst}) are added

@@ -37,7 +37,7 @@ SET_IF_EMPTY(BLAS_DIR "$ENV{BLAS_DIR}")
 SET_IF_EMPTY(LAPACK_DIR "$ENV{LAPACK_DIR}")
 
 SET(_cmake_prefix_path_backup "${CMAKE_PREFIX_PATH}")
-LIST(REMOVE_ITEM CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules/)
+LIST(REMOVE_ITEM CMAKE_MODULE_PATH ${DEAL_II_SOURCE_DIR}/cmake/modules/)
 
 SET(CMAKE_PREFIX_PATH ${BLAS_DIR} ${LAPACK_DIR} ${_cmake_prefix_path_backup})
 FIND_PACKAGE(BLAS)
@@ -46,7 +46,7 @@ SET(CMAKE_PREFIX_PATH ${LAPACK_DIR} ${_cmake_prefix_path_backup})
 FIND_PACKAGE(LAPACK)
 
 SET(CMAKE_PREFIX_PATH ${_cmake_prefix_path_backup})
-LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules/)
+LIST(APPEND CMAKE_MODULE_PATH ${DEAL_II_SOURCE_DIR}/cmake/modules/)
 
 #
 # Filter out spurious "FALSE" in the library lists:

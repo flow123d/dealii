@@ -44,7 +44,7 @@ ELSE()
       COMMAND ${CMAKE_COMMAND}
         -DCOMPONENT="${_name}" -P cmake_install.cmake
       COMMENT "Build and install component \"library\"."
-      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+      WORKING_DIRECTORY ${DEAL_II_BINARY_DIR}
       )
   ENDMACRO()
 
@@ -100,7 +100,7 @@ ELSE()
   SET(_make_command "make")
 ENDIF()
 
-FILE(WRITE ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/print_info.cmake
+FILE(WRITE ${DEAL_II_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/print_info.cmake
 "MESSAGE(
 \"###
 #
@@ -136,5 +136,5 @@ FILE(WRITE ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/print_info.cmake
   )
 
 ADD_CUSTOM_TARGET(info
-  COMMAND ${CMAKE_COMMAND} -P ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/print_info.cmake
+  COMMAND ${CMAKE_COMMAND} -P ${DEAL_II_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/print_info.cmake
   )

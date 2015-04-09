@@ -32,7 +32,7 @@ SET(_inst
   )
 
 FILE(GLOB _header
-  ${CMAKE_SOURCE_DIR}/include/deal.II/hp/*.h
+  ${DEAL_II_SOURCE_DIR}/include/deal.II/hp/*.h
   )
 
 DEAL_II_ADD_LIBRARY(obj_hp OBJECT ${_src} ${_header} ${_inst})

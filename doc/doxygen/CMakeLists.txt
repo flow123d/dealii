@@ -38,7 +38,7 @@ ENDIF()
 # A glob. I'm sorry
 #
 file(GLOB DEAL_II_STEPS
-  ${CMAKE_SOURCE_DIR}/examples/step-*
+  ${DEAL_II_SOURCE_DIR}/examples/step-*
   )
 
 #
@@ -94,28 +94,28 @@ SET(_doxygen_input
 )
 
 LIST(APPEND _doxygen_input
-  ${CMAKE_SOURCE_DIR}/include/
-  ${CMAKE_BINARY_DIR}/include/
-  ${CMAKE_SOURCE_DIR}/doc/news/
+  ${DEAL_II_SOURCE_DIR}/include/
+  ${DEAL_II_BINARY_DIR}/include/
+  ${DEAL_II_SOURCE_DIR}/doc/news/
   ${CMAKE_CURRENT_BINARY_DIR}/tutorial/tutorial.h
-  ${CMAKE_SOURCE_DIR}/contrib/parameter_gui/
+  ${DEAL_II_SOURCE_DIR}/contrib/parameter_gui/
   )
 
 SET(_doxygen_image_path
   ${CMAKE_CURRENT_SOURCE_DIR}/images
-  ${CMAKE_SOURCE_DIR}/contrib/parameter_gui/images
+  ${DEAL_II_SOURCE_DIR}/contrib/parameter_gui/images
   ${CMAKE_CURRENT_BINARY_DIR}/images
   )
 
 file(GLOB _doxygen_depend
   ${CMAKE_CURRENT_SOURCE_DIR}/headers/*.h
-  ${CMAKE_SOURCE_DIR}/contrib/parameter_gui/*.h
-  ${CMAKE_SOURCE_DIR}/contrib/parameter_gui/main.cpp
-  ${CMAKE_SOURCE_DIR}/doc/news/*.h
-  ${CMAKE_SOURCE_DIR}/include/deal.II/**/*.h
+  ${DEAL_II_SOURCE_DIR}/contrib/parameter_gui/*.h
+  ${DEAL_II_SOURCE_DIR}/contrib/parameter_gui/main.cpp
+  ${DEAL_II_SOURCE_DIR}/doc/news/*.h
+  ${DEAL_II_SOURCE_DIR}/include/deal.II/**/*.h
   )
 LIST(APPEND _doxygen_depend
-  ${CMAKE_BINARY_DIR}/include/deal.II/base/config.h
+  ${DEAL_II_BINARY_DIR}/include/deal.II/base/config.h
   ${CMAKE_CURRENT_BINARY_DIR}/tutorial/tutorial.h
   )
 FOREACH(_step ${DEAL_II_STEPS})
@@ -143,10 +143,10 @@ FILE(APPEND "${CMAKE_CURRENT_BINARY_DIR}/options.dox"
 #
 ADD_CUSTOM_COMMAND(
   OUTPUT
-    ${CMAKE_BINARY_DIR}/doxygen.log
+    ${DEAL_II_BINARY_DIR}/doxygen.log
   COMMAND ${DOXYGEN_EXECUTABLE}
     ${CMAKE_CURRENT_BINARY_DIR}/options.dox
-    > ${CMAKE_BINARY_DIR}/doxygen.log 2>&1 # *pssst*
+    > ${DEAL_II_BINARY_DIR}/doxygen.log 2>&1 # *pssst*
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   DEPENDS
     tutorial
@@ -158,7 +158,7 @@ ADD_CUSTOM_COMMAND(
   VERBATIM
   )
 ADD_CUSTOM_TARGET(doxygen ALL
-  DEPENDS ${CMAKE_BINARY_DIR}/doxygen.log
+  DEPENDS ${DEAL_II_BINARY_DIR}/doxygen.log
   )
 ADD_DEPENDENCIES(documentation doxygen)
 
@@ -169,7 +169,7 @@ INSTALL(FILES
   )
 
 INSTALL(FILES
-  ${CMAKE_SOURCE_DIR}/doc/deal.ico
+  ${DEAL_II_SOURCE_DIR}/doc/deal.ico
   DESTINATION ${DEAL_II_DOCHTML_RELDIR}/doxygen/deal.II
   COMPONENT documentation
   )

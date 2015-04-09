@@ -35,9 +35,9 @@ MACRO(DEAL_II_INSOURCE_SETUP_TARGET _target _build)
     )
   SET_PROPERTY(TARGET ${_target} APPEND PROPERTY
     INCLUDE_DIRECTORIES
-      "${CMAKE_BINARY_DIR}/include"
-      "${CMAKE_SOURCE_DIR}/include"
-      "${CMAKE_SOURCE_DIR}/include/deal.II/"
+      "${DEAL_II_BINARY_DIR}/include"
+      "${DEAL_II_SOURCE_DIR}/include"
+      "${DEAL_II_SOURCE_DIR}/include/deal.II/"
     )
 
 GET_PROPERTY(_type TARGET ${_target} PROPERTY TYPE)

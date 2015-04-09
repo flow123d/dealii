@@ -71,9 +71,9 @@
 # Some black magic to have substitution in command names:
 #
 MACRO(RUN_COMMAND _the_command)
-  FILE(WRITE "${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/macro_configure_feature.tmp"
+  FILE(WRITE "${DEAL_II_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/macro_configure_feature.tmp"
     "${_the_command}")
-  INCLUDE("${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/macro_configure_feature.tmp")
+  INCLUDE("${DEAL_II_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/macro_configure_feature.tmp")
 ENDMACRO()
 
 

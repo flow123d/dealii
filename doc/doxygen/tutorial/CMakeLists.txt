@@ -19,14 +19,14 @@
 #
 
 file(GLOB DEAL_II_STEPS_BUILDSON
-  ${CMAKE_SOURCE_DIR}/examples/step-*/doc/builds-on
+  ${DEAL_II_SOURCE_DIR}/examples/step-*/doc/builds-on
   )
 
 ADD_CUSTOM_COMMAND(
   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/tutorial.h
   COMMAND ${PERL_EXECUTABLE}
   ARGS
-    ${CMAKE_SOURCE_DIR}/doc/doxygen/scripts/steps.pl
+    ${DEAL_II_SOURCE_DIR}/doc/doxygen/scripts/steps.pl
     ${CMAKE_CURRENT_SOURCE_DIR}/tutorial.h.in
     ${DEAL_II_STEPS}
     > ${CMAKE_CURRENT_BINARY_DIR}/tutorial.h
@@ -55,12 +55,12 @@ FOREACH(_step ${DEAL_II_STEPS})
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_step}.cc
     COMMAND ${PERL_EXECUTABLE}
     ARGS
-      ${CMAKE_SOURCE_DIR}/doc/doxygen/scripts/program2plain
-      < ${CMAKE_SOURCE_DIR}/examples/${_step}/${_step}.cc
+      ${DEAL_II_SOURCE_DIR}/doc/doxygen/scripts/program2plain
+      < ${DEAL_II_SOURCE_DIR}/examples/${_step}/${_step}.cc
       > ${CMAKE_CURRENT_BINARY_DIR}/${_step}.cc
     DEPENDS
-      ${CMAKE_SOURCE_DIR}/doc/doxygen/scripts/program2plain
-      ${CMAKE_SOURCE_DIR}/examples/${_step}/${_step}.cc
+      ${DEAL_II_SOURCE_DIR}/doc/doxygen/scripts/program2plain
+      ${DEAL_II_SOURCE_DIR}/examples/${_step}/${_step}.cc
     VERBATIM
     )
 
@@ -68,16 +68,16 @@ FOREACH(_step ${DEAL_II_STEPS})
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_step}.h
     COMMAND ${PERL_EXECUTABLE}
     ARGS
-      ${CMAKE_SOURCE_DIR}/doc/doxygen/scripts/make_step.pl
-      ${_step} ${CMAKE_SOURCE_DIR}
+      ${DEAL_II_SOURCE_DIR}/doc/doxygen/scripts/make_step.pl
+      ${_step} ${DEAL_II_SOURCE_DIR}
       > ${CMAKE_CURRENT_BINARY_DIR}/${_step}.h
     WORKING_DIRECTORY
       ${CMAKE_CURRENT_BINARY_DIR}
     DEPENDS
-      ${CMAKE_SOURCE_DIR}/doc/doxygen/scripts/make_step.pl
-      ${CMAKE_SOURCE_DIR}/examples/${_step}/${_step}.cc
-      ${CMAKE_SOURCE_DIR}/examples/${_step}/doc/intro.dox
-      ${CMAKE_SOURCE_DIR}/examples/${_step}/doc/results.dox
+      ${DEAL_II_SOURCE_DIR}/doc/doxygen/scripts/make_step.pl
+      ${DEAL_II_SOURCE_DIR}/examples/${_step}/${_step}.cc
+      ${DEAL_II_SOURCE_DIR}/examples/${_step}/doc/intro.dox
+      ${DEAL_II_SOURCE_DIR}/examples/${_step}/doc/results.dox
     )
 
   ADD_CUSTOM_TARGET(tutorial_${_step}
