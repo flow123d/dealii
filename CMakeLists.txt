@@ -94,7 +94,7 @@ INCLUDE(setup_cached_variables)
 #
 # Now, set the project and set up the rest:
 #
-PROJECT(deal.II CXX C)
+#PROJECT(deal.II CXX C)
 ENABLE_LANGUAGE_OPTIONAL(Fortran)
 
 INCLUDE(setup_deal_ii)
