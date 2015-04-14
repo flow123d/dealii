@@ -30,7 +30,7 @@
 #
 # General configuration for cmake:
 #
-MESSAGE(STATUS "Building deal.II library (CMake ${CMAKE_VERSION})")
+MESSAGE(STATUS "Configuring deal.II library (CMake ${CMAKE_VERSION})")
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
@@ -194,4 +194,4 @@ LIST(GET DEAL_II_BUILD_TYPES 0 BUILD_TYPE)
 SET(DEAL_II_LIBRARY_NAME "${DEAL_II_BASE_NAME}${DEAL_II_${BUILD_TYPE}_SUFFIX}" PARENT_SCOPE)
 
 
-MESSAGE(STATUS "Building deal.II library - Done")
+MESSAGE(STATUS "Configuring deal.II library - Done")
