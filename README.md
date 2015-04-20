@@ -1,3 +1,13 @@
+Development version of deal.II
+==============================
+
+This is a fork of the official deal.II repository at GitHub whose
+purpose is the integration of the library into the Flow123d project.
+See also http://flow123d.github.com.
+
+Current version of deal.II being used in the main branch is 8.2.1.
+
+
 What is deal.II?
 ================
 
