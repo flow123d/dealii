@@ -1,3 +1,11 @@
+Development version of deal.II
+==============================
+
+This is a fork of the official deal.II repository at GitHub whose
+purpose is the integration of the library into the Flow123d project.
+See also http://flow123d.github.com.
+
+
 What is deal.II?
 ================
 
