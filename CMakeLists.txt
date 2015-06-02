@@ -161,9 +161,9 @@ ADD_SUBDIRECTORY(include)
 #  ADD_SUBDIRECTORY(doc) # has to be included after include
 #ENDIF()
 
-#IF(DEAL_II_HAVE_BUNDLED_DIRECTORY)
-#  ADD_SUBDIRECTORY(bundled)
-#ENDIF()
+IF(DEAL_II_HAVE_BUNDLED_DIRECTORY)
+  ADD_SUBDIRECTORY(bundled)
+ENDIF()
 ADD_SUBDIRECTORY(source) # has to be included after bundled
 
 ADD_SUBDIRECTORY(cmake/config) # has to be included after source
