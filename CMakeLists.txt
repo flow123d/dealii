@@ -73,9 +73,10 @@ ENDFOREACH()
 #
 # Check for the existence of various optional folders:
 #
-IF(EXISTS ${DEAL_II_SOURCE_DIR}/bundled/CMakeLists.txt)
-  SET(DEAL_II_HAVE_BUNDLED_DIRECTORY TRUE)
-ENDIF()
+# Flow123d: Bundled directory intentionally disabled.
+#IF(EXISTS ${DEAL_II_SOURCE_DIR}/bundled/CMakeLists.txt)
+#  SET(DEAL_II_HAVE_BUNDLED_DIRECTORY TRUE)
+#ENDIF()
 
 IF(EXISTS ${DEAL_II_SOURCE_DIR}/doc/CMakeLists.txt)
   SET(DEAL_II_HAVE_DOC_DIRECTORY TRUE)
@@ -104,12 +105,13 @@ INCLUDE(setup_compiler_flags)
 #
 # Include information about bundled libraries:
 #
-IF(DEAL_II_HAVE_BUNDLED_DIRECTORY)
-  SET(_file ${DEAL_II_SOURCE_DIR}/bundled/setup_bundled.cmake)
-  MESSAGE(STATUS "")
-  MESSAGE(STATUS "Include ${_file}")
-  INCLUDE(${_file})
-ENDIF()
+# Flow123d: Bundled directory intentionally disabled.
+#IF(DEAL_II_HAVE_BUNDLED_DIRECTORY)
+#  SET(_file ${DEAL_II_SOURCE_DIR}/bundled/setup_bundled.cmake)
+#  MESSAGE(STATUS "")
+#  MESSAGE(STATUS "Include ${_file}")
+#  INCLUDE(${_file})
+#ENDIF()
 
 #
 # Run all system checks:
@@ -161,9 +163,10 @@ ADD_SUBDIRECTORY(include)
 #  ADD_SUBDIRECTORY(doc) # has to be included after include
 #ENDIF()
 
-IF(DEAL_II_HAVE_BUNDLED_DIRECTORY)
-  ADD_SUBDIRECTORY(bundled)
-ENDIF()
+# Flow123d: Bundled directory intentionally disabled.
+#IF(DEAL_II_HAVE_BUNDLED_DIRECTORY)
+#  ADD_SUBDIRECTORY(bundled)
+#ENDIF()
 ADD_SUBDIRECTORY(source) # has to be included after bundled
 
 ADD_SUBDIRECTORY(cmake/config) # has to be included after source
@@ -188,7 +191,7 @@ ADD_SUBDIRECTORY(cmake/config) # has to be included after source
 #
 # Propagate important variables to upstream directory, if built as submodule.
 #
-SET(DEAL_II_BUNDLED_INCLUDE_DIRS "${DEAL_II_BUNDLED_INCLUDE_DIRS}" PARENT_SCOPE)
+#SET(DEAL_II_BUNDLED_INCLUDE_DIRS "${DEAL_II_BUNDLED_INCLUDE_DIRS}" PARENT_SCOPE)
 
 LIST(GET DEAL_II_BUILD_TYPES 0 BUILD_TYPE)
 SET(DEAL_II_LIBRARY_NAME "${DEAL_II_BASE_NAME}${DEAL_II_${BUILD_TYPE}_SUFFIX}" PARENT_SCOPE)
