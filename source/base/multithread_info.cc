@@ -25,7 +25,7 @@
 #  include <sys/sysctl.h>
 #endif
 
-#if defined(__FreeBSD__)
+#if defined(__FreeBSD__) || defined(__CYGWIN__)
 #  include <stdlib.h>
 #endif
 
