@@ -15,61 +15,63 @@
 
 INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_BINARY_DIR})
 
+# Some of the following lines were commented out in order to
+# speed up builds of dealii linked with Flow123d.
 SET(_src
-  auto_derivative_function.cc
-  conditional_ostream.cc
+#   auto_derivative_function.cc
+#   conditional_ostream.cc
   config.cc
-  convergence_table.cc
-  data_out_base.cc
-  event.cc
+#   convergence_table.cc
+#   data_out_base.cc
+#   event.cc
   exceptions.cc
-  flow_function.cc
-  function.cc
-  function_derivative.cc
-  function_lib.cc
-  function_lib_cutoff.cc
-  function_parser.cc
-  function_time.cc
-  geometry_info.cc
+#   flow_function.cc
+#   function.cc
+#   function_derivative.cc
+#   function_lib.cc
+#   function_lib_cutoff.cc
+#   function_parser.cc
+#   function_time.cc
+#   geometry_info.cc
   index_set.cc
   job_identifier.cc
   logstream.cc
   memory_consumption.cc
   mpi.cc
   multithread_info.cc
-  named_selection.cc
+#   named_selection.cc
   parallel.cc
   parameter_handler.cc
-  parsed_function.cc
+#   parsed_function.cc
   partitioner.cc
   path_search.cc
-  polynomial.cc
-  polynomials_abf.cc
-  polynomials_adini.cc
-  polynomials_bdm.cc
-  polynomials_nedelec.cc
-  polynomial_space.cc
-  polynomials_p.cc
-  polynomials_piecewise.cc
-  polynomials_raviart_thomas.cc
-  quadrature.cc
-  quadrature_lib.cc
-  quadrature_selector.cc
+#   polynomial.cc
+#   polynomials_abf.cc
+#   polynomials_adini.cc
+#   polynomials_bdm.cc
+#   polynomials_nedelec.cc
+#   polynomial_space.cc
+#   polynomials_p.cc
+#   polynomials_piecewise.cc
+#   polynomials_raviart_thomas.cc
+#   quadrature.cc
+#   quadrature_lib.cc
+#   quadrature_selector.cc
   subscriptor.cc
-  symmetric_tensor.cc
-  table_handler.cc
-  tensor_function.cc
-  tensor_product_polynomials.cc
-  tensor_product_polynomials_const.cc
+#   symmetric_tensor.cc
+#   table_handler.cc
+#   tensor_function.cc
+#   tensor_product_polynomials.cc
+#   tensor_product_polynomials_const.cc
   thread_management.cc
-  timer.cc
-  time_stepping.cc
+#   timer.cc
+#   time_stepping.cc
   utilities.cc
   )
 
 SET(_inst
-  data_out_base.inst.in
-  time_stepping.inst.in
+#   data_out_base.inst.in
+#   time_stepping.inst.in
   )
 
 FILE(GLOB _header
