@@ -93,7 +93,7 @@ SET(_inst
   sparse_matrix.inst.in
   trilinos_sparse_matrix.inst.in
   trilinos_vector_base.inst.in
-#   vector.inst.in
+  vector.inst.in
   vector_memory.inst.in
 #   vector_view.inst.in
   )
