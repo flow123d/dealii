@@ -32,10 +32,12 @@ SET_TARGET_PROPERTIES(mesh_converter_exe
 
 ADD_DEPENDENCIES(mesh_converter mesh_converter_exe)
 
-INSTALL(TARGETS mesh_converter_exe
-  RUNTIME DESTINATION ${DEAL_II_EXECUTABLE_RELDIR}
-  COMPONENT mesh_converter
-  )
+IF(DEAL_II_INSTALL_RULES)
+    INSTALL(TARGETS mesh_converter_exe
+      RUNTIME DESTINATION ${DEAL_II_EXECUTABLE_RELDIR}
+      COMPONENT mesh_converter
+      )
+ENDIF()
 EXPORT(TARGETS mesh_converter_exe
   FILE
   ${DEAL_II_BINARY_DIR}/${DEAL_II_PROJECT_CONFIG_RELDIR}/${DEAL_II_PROJECT_CONFIG_NAME}Targets.cmake

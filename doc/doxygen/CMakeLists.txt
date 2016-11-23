@@ -162,21 +162,23 @@ ADD_CUSTOM_TARGET(doxygen ALL
   )
 ADD_DEPENDENCIES(documentation doxygen)
 
-INSTALL(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/deal.tag
-  DESTINATION ${DEAL_II_DOCHTML_RELDIR}/doxygen
-  COMPONENT documentation
-  )
 
-INSTALL(FILES
-  ${DEAL_II_SOURCE_DIR}/doc/deal.ico
-  DESTINATION ${DEAL_II_DOCHTML_RELDIR}/doxygen/deal.II
-  COMPONENT documentation
-  )
+IF(DEAL_II_INSTALL_RULES)
+    INSTALL(FILES
+      ${CMAKE_CURRENT_BINARY_DIR}/deal.tag
+      DESTINATION ${DEAL_II_DOCHTML_RELDIR}/doxygen
+      COMPONENT documentation
+      )
 
-INSTALL(DIRECTORY
-  ${CMAKE_CURRENT_BINARY_DIR}/deal.II
-  DESTINATION ${DEAL_II_DOCHTML_RELDIR}/doxygen
-  COMPONENT documentation
-  )
+    INSTALL(FILES
+      ${DEAL_II_SOURCE_DIR}/doc/deal.ico
+      DESTINATION ${DEAL_II_DOCHTML_RELDIR}/doxygen/deal.II
+      COMPONENT documentation
+      )
 
+    INSTALL(DIRECTORY
+      ${CMAKE_CURRENT_BINARY_DIR}/deal.II
+      DESTINATION ${DEAL_II_DOCHTML_RELDIR}/doxygen
+      COMPONENT documentation
+      )
+ENDIF()

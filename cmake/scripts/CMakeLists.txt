@@ -35,9 +35,11 @@ IF(DEAL_II_COMPONENT_COMPAT_FILES)
   SET_TARGET_PROPERTIES(expand_instantiations_exe make_dependencies
     PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${DEAL_II_BINARY_DIR}/${DEAL_II_COMMON_RELDIR}/scripts
     )
-  INSTALL(TARGETS expand_instantiations_exe make_dependencies
-    DESTINATION ${DEAL_II_COMMON_RELDIR}/scripts
-    COMPONENT compat_files
-    )
+    IF(DEAL_II_INSTALL_RULES)
+      INSTALL(TARGETS expand_instantiations_exe make_dependencies
+        DESTINATION ${DEAL_II_COMMON_RELDIR}/scripts
+        COMPONENT compat_files
+        )
+    ENDIF()
   MESSAGE(STATUS "Setting up compat_files - Done")
 ENDIF()

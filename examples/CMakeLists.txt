@@ -16,36 +16,38 @@
 IF(DEAL_II_COMPONENT_EXAMPLES)
   MESSAGE(STATUS "Setting up examples")
 
-  INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
-    DESTINATION ${DEAL_II_EXAMPLES_RELDIR}
-    COMPONENT examples
-    FILES_MATCHING
-    #
-    # Exclude folder structures: doc, doxygen, CMakeFiles,...
-    #
-    PATTERN "CMakeFiles*" EXCLUDE
-    PATTERN "doc*" EXCLUDE
-    PATTERN ".svn*" EXCLUDE
-    #
-    # Glob Includes:
-    #
-    PATTERN "*.cc"
-    PATTERN "*.prm"
-    PATTERN "*.inp"
-    PATTERN "step*/CMakeLists.txt"
-    PATTERN "doxygen/CMakeLists.txt"
-    #
-    # Special files:
-    #
-    PATTERN "output.reference.dat"        # step-39
-    PATTERN "postprocess.pl"              # step-39
-    PATTERN "obstacle_file.pbm"           # step-42
-    PATTERN "untitled.geo"                # step-49
-    PATTERN "untitled.msh"                # step-49
-    PATTERN "topography.txt.gz"           # step-53
-    PATTERN "initial_mesh_3d.vtk"         # step-54
-    PATTERN "DTMB-5415_bulbous_bow.iges"  # step-54
-    )
+  IF(DEAL_II_INSTALL_RULES)
+      INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
+        DESTINATION ${DEAL_II_EXAMPLES_RELDIR}
+        COMPONENT examples
+        FILES_MATCHING
+        #
+        # Exclude folder structures: doc, doxygen, CMakeFiles,...
+        #
+        PATTERN "CMakeFiles*" EXCLUDE
+        PATTERN "doc*" EXCLUDE
+        PATTERN ".svn*" EXCLUDE
+        #
+        # Glob Includes:
+        #
+        PATTERN "*.cc"
+        PATTERN "*.prm"
+        PATTERN "*.inp"
+        PATTERN "step*/CMakeLists.txt"
+        PATTERN "doxygen/CMakeLists.txt"
+        #
+        # Special files:
+        #
+        PATTERN "output.reference.dat"        # step-39
+        PATTERN "postprocess.pl"              # step-39
+        PATTERN "obstacle_file.pbm"           # step-42
+        PATTERN "untitled.geo"                # step-49
+        PATTERN "untitled.msh"                # step-49
+        PATTERN "topography.txt.gz"           # step-53
+        PATTERN "initial_mesh_3d.vtk"         # step-54
+        PATTERN "DTMB-5415_bulbous_bow.iges"  # step-54
+        )
+  ENDIF()
 
   MESSAGE(STATUS "Setting up examples - Done")
 ENDIF()

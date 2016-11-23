@@ -21,11 +21,13 @@ MESSAGE(STATUS "Setting up bundled features")
 
 
 IF(FEATURE_BOOST_BUNDLED_CONFIGURED)
-  INSTALL(DIRECTORY ${BOOST_FOLDER}/include/boost
-    DESTINATION ${DEAL_II_INCLUDE_RELDIR}/deal.II/bundled
-    COMPONENT library
-    PATTERN ".svn" EXCLUDE
-    )
+    IF(DEAL_II_INSTALL_RULES)
+      INSTALL(DIRECTORY ${BOOST_FOLDER}/include/boost
+        DESTINATION ${DEAL_II_INCLUDE_RELDIR}/deal.II/bundled
+        COMPONENT library
+        PATTERN ".svn" EXCLUDE
+        )
+    ENDIF()
 
   ADD_SUBDIRECTORY(${BOOST_FOLDER}/libs/serialization/src)
   ADD_SUBDIRECTORY(${BOOST_FOLDER}/libs/system/src)
@@ -43,12 +45,14 @@ ENDIF()
 
 
 IF(FEATURE_THREADS_BUNDLED_CONFIGURED)
-  INSTALL(DIRECTORY ${TBB_FOLDER}/include/tbb
-    DESTINATION ${DEAL_II_INCLUDE_RELDIR}/deal.II/bundled
-    COMPONENT library
-    FILES_MATCHING PATTERN "*.h"
-    PATTERN ".svn" EXCLUDE
-    )
+    IF(DEAL_II_INSTALL_RULES)
+      INSTALL(DIRECTORY ${TBB_FOLDER}/include/tbb
+        DESTINATION ${DEAL_II_INCLUDE_RELDIR}/deal.II/bundled
+        COMPONENT library
+        FILES_MATCHING PATTERN "*.h"
+        PATTERN ".svn" EXCLUDE
+        )
+    ENDIF()
 
   ADD_SUBDIRECTORY(${TBB_FOLDER}/src)
 ENDIF()

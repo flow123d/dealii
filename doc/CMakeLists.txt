@@ -25,23 +25,27 @@ IF(DEAL_II_COMPONENT_DOCUMENTATION)
   #
   # Install the static elements of the html documentation:
   #
-  INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
-    DESTINATION ${DEAL_II_DOCHTML_RELDIR}
-    COMPONENT documentation
-    PATTERN "CMakeLists.txt" EXCLUDE
-    PATTERN "doxygen" EXCLUDE
-    PATTERN "*.in" EXCLUDE
-    )
+  IF(DEAL_II_INSTALL_RULES)
+      INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
+        DESTINATION ${DEAL_II_DOCHTML_RELDIR}
+        COMPONENT documentation
+        PATTERN "CMakeLists.txt" EXCLUDE
+        PATTERN "doxygen" EXCLUDE
+        PATTERN "*.in" EXCLUDE
+        )
+  ENDIF()
 
   CONFIGURE_FILE(
     ${CMAKE_CURRENT_SOURCE_DIR}/title.html.in
     ${CMAKE_CURRENT_BINARY_DIR}/title.html
     )
-  INSTALL(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/title.html
-    DESTINATION ${DEAL_II_DOCHTML_RELDIR}
-    COMPONENT documentation
-    )
+  IF(DEAL_II_INSTALL_RULES)
+      INSTALL(FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/title.html
+        DESTINATION ${DEAL_II_DOCHTML_RELDIR}
+        COMPONENT documentation
+        )
+  ENDIF()
 
   MESSAGE(STATUS "Setting up documentation - Done")
 
@@ -59,9 +63,12 @@ ELSE()
 ENDIF()
 
 SET(_destination)
-INSTALL(FILES
-  ${DEAL_II_SOURCE_DIR}/README.md
-  ${DEAL_II_SOURCE_DIR}/LICENSE
-  DESTINATION ${_foo}
-  COMPONENT library
-  )
+
+IF(DEAL_II_INSTALL_RULES)
+    INSTALL(FILES
+      ${DEAL_II_SOURCE_DIR}/README.md
+      ${DEAL_II_SOURCE_DIR}/LICENSE
+      DESTINATION ${_foo}
+      COMPONENT library
+      )
+ENDIF()
